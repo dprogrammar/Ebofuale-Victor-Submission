@@ -1,21 +1,19 @@
-<div class="graph-card card">
-  <div class="graph-header">
-    <div class="graph-title">
+<div class="graph-card">
+  <div class="graph-header-row">
+    <div class="graph-header-text">
       <h2>Lorem Lorem Lorem</h2>
       <p>Lorem ipsum dolor sit</p>
     </div>
 
-    <div class="graph-legend">
-      <span class="legend-dot legend-critical"></span>
-      <span>Critical</span>
-      <span class="legend-dot legend-medium"></span>
-      <span>Medium</span>
-      <span class="legend-dot legend-low"></span>
-      <span>Low</span>
+    <div class="graph-header-legend">
+      <div class="graph-header-item" *ngFor="let item of riskLegend">
+        <span class="legend-dot" [ngClass]="item.colorClass"></span>
+        <span>{{ item.label }}</span>
+      </div>
     </div>
   </div>
 
-  <div class="graph-wrapper">
+  <div class="graph-body">
     <svg class="graph-lines" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
       <defs>
         <marker
@@ -35,13 +33,14 @@
         <polyline
           class="graph-edge"
           [attr.points]="getEdgePoints(edge)"
-          marker-end="url(#edgeArrow)"
+          [attr.marker-end]="isArrow(edge) ? 'url(#edgeArrow)' : null"
         ></polyline>
       </ng-container>
     </svg>
 
     <ng-container *ngFor="let node of nodes()">
       <button
+        *ngIf="node.type !== 'junction'"
         type="button"
         class="graph-node"
         [ngClass]="{
@@ -110,21 +109,16 @@
       </div>
     </div>
   </div>
-
   <div class="graph-footer">
     <div class="graph-footer-line"></div>
-    <div class="graph-footer-status">
-      <button type="button" class="graph-status">
-        <span class="graph-status-dot graph-status-dot-critical"></span>
-        <span>Lorem</span>
-      </button>
-      <button type="button" class="graph-status">
-        <span class="graph-status-dot graph-status-dot-medium"></span>
-        <span>Lorem</span>
-      </button>
-      <button type="button" class="graph-status">
-        <span class="graph-status-dot graph-status-dot-low"></span>
-        <span>Lorem</span>
+    <div class="graph-footer-legend">
+      <button
+        type="button"
+        class="graph-footer-chip"
+        *ngFor="let item of footerLegend"
+      >
+        <span class="chip-dot" [ngClass]="item.colorClass"></span>
+        <span>{{ item.label }}</span>
       </button>
     </div>
   </div>
