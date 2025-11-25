@@ -1,0 +1,131 @@
+<div class="graph-card card">
+  <div class="graph-header">
+    <div class="graph-title">
+      <h2>Lorem Lorem Lorem</h2>
+      <p>Lorem ipsum dolor sit</p>
+    </div>
+
+    <div class="graph-legend">
+      <span class="legend-dot legend-critical"></span>
+      <span>Critical</span>
+      <span class="legend-dot legend-medium"></span>
+      <span>Medium</span>
+      <span class="legend-dot legend-low"></span>
+      <span>Low</span>
+    </div>
+  </div>
+
+  <div class="graph-wrapper">
+    <svg class="graph-lines" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <marker
+          id="edgeArrow"
+          markerWidth="4"
+          markerHeight="4"
+          refX="3.6"
+          refY="2"
+          orient="auto"
+          markerUnits="strokeWidth"
+        >
+          <path d="M0,0 L4,2 L0,4 z" class="graph-edge-arrow"></path>
+        </marker>
+      </defs>
+
+      <ng-container *ngFor="let edge of edges()">
+        <polyline
+          class="graph-edge"
+          [attr.points]="getEdgePoints(edge)"
+          marker-end="url(#edgeArrow)"
+        ></polyline>
+      </ng-container>
+    </svg>
+
+    <ng-container *ngFor="let node of nodes()">
+      <button
+        type="button"
+        class="graph-node"
+        [ngClass]="{
+          'graph-node-actor': node.type === 'actor',
+          'graph-node-server': node.type === 'server',
+          'graph-node-asset': node.type === 'asset'
+        }"
+        [ngStyle]="{ top: node.y + '%', left: node.x + '%' }"
+        (click)="selectNode(node.id)"
+      >
+        <div class="graph-node-main">
+          <div class="graph-node-circle">
+            <div
+              class="graph-node-icon"
+              [ngClass]="{
+                'graph-icon-mask': node.type === 'actor',
+                'graph-icon-server': node.type !== 'actor'
+              }"
+            ></div>
+
+            <div
+              *ngIf="node.type === 'actor'"
+              class="graph-node-badge graph-node-badge-small"
+            >
+              <span class="badge-mini"></span>
+            </div>
+
+            <div
+              *ngIf="node.type === 'asset' && node.hasAlert"
+              class="graph-node-badge graph-node-badge-alert"
+            >
+              <span class="badge-alert-dot"></span>
+            </div>
+          </div>
+
+          <div class="graph-node-text" *ngIf="node.type !== 'asset'">
+            <div class="graph-node-label">{{ node.label }}</div>
+          </div>
+
+          <div
+            class="graph-node-text graph-node-text-asset"
+            *ngIf="node.type === 'asset'"
+          >
+            <div class="graph-node-label">{{ node.label }}</div>
+            <div class="graph-node-sub">{{ node.ip }}</div>
+          </div>
+        </div>
+      </button>
+    </ng-container>
+
+    <div
+      class="graph-popover"
+      *ngIf="selectedNode() as active"
+      [ngStyle]="{ top: (active.y + 9) + '%', left: active.x + '%' }"
+    >
+      <div class="graph-popover-title">{{ active.label }}</div>
+      <div class="graph-popover-row">
+        <span>Contextual risk</span>
+        <span class="graph-pill graph-pill-critical">Critical</span>
+      </div>
+      <div class="graph-popover-row">
+        <span>Asset</span>
+        <span class="graph-popover-sub">
+          {{ active.ip || '192.168.1.1' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="graph-footer">
+    <div class="graph-footer-line"></div>
+    <div class="graph-footer-status">
+      <button type="button" class="graph-status">
+        <span class="graph-status-dot graph-status-dot-critical"></span>
+        <span>Lorem</span>
+      </button>
+      <button type="button" class="graph-status">
+        <span class="graph-status-dot graph-status-dot-medium"></span>
+        <span>Lorem</span>
+      </button>
+      <button type="button" class="graph-status">
+        <span class="graph-status-dot graph-status-dot-low"></span>
+        <span>Lorem</span>
+      </button>
+    </div>
+  </div>
+</div>

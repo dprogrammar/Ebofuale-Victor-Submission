@@ -1,0 +1,33 @@
+<aside class="sidebar" [class.sidebar-collapsed]="collapsed">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <span class="sidebar-logo-mark">S</span>
+      <span class="sidebar-logo-text" *ngIf="!collapsed">Spikerz</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <button
+      class="sidebar-item"
+      *ngFor="let item of items"
+      [class.sidebar-item-active]="item.active"
+      type="button"
+    >
+      <mat-icon class="sidebar-item-icon">{{ item.icon }}</mat-icon>
+      <span class="sidebar-item-label" *ngIf="!collapsed">{{ item.label }}</span>
+    </button>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-user" *ngIf="!collapsed">
+      <div class="sidebar-avatar">L</div>
+      <div class="sidebar-user-text">
+        <div class="sidebar-user-name">Lorem Lorem</div>
+        <div class="sidebar-user-role">Lorem</div>
+      </div>
+    </div>
+    <button class="sidebar-footer-icon" *ngIf="collapsed" type="button">
+      <span class="material-icons">person</span>
+    </button>
+  </div>
+</aside>

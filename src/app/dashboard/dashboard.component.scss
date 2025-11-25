@@ -1,0 +1,212 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 25rem) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.panel-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* MAIN LEFT CARD */
+
+.info-card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.6rem;
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.22);
+}
+
+/* Description / Extra titles */
+
+.section-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.section-body {
+  margin: 0 0 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #4b5563;
+}
+
+/* KEY–VALUE TABLE */
+
+.kv-list {
+  margin-top: 1.1rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.4rem;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.83rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.kv-row:last-child {
+  border-bottom: none;
+}
+
+.kv-row span:first-child {
+  color: #111827;
+}
+
+.kv-value {
+  color: #111827;
+  text-align: right;
+}
+
+.kv-yes {
+  color: #16a34a;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.kv-yes-icon {
+  font-size: 0.8rem;
+}
+
+/* LOREM IPSUM DOLOR SIT SECTION (3 CARDS) */
+
+.lorem-title {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.lorem-card {
+  margin-top: 0.9rem;
+  border-radius: 1.1rem;
+  background: #ffffff;
+  box-shadow: 0 18px 35px rgba(148, 163, 184, 0.22);
+  padding: 0.85rem 1rem 1rem;
+}
+
+.lorem-head {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: #1f2937;
+}
+
+.lorem-inner {
+  border-radius: 0.9rem;
+  background: #f5f8ff;
+  padding: 0.9rem 1rem;
+  display: grid;
+  grid-template-columns: auto auto 1px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0.9rem;
+}
+
+/* icon block */
+
+.lorem-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.server-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.9rem;
+  background: #e0f2ff;
+  border: 0.09rem solid #2563eb;
+  position: relative;
+}
+
+.server-icon::before,
+.server-icon::after {
+  content: '';
+  position: absolute;
+  left: 0.4rem;
+  right: 0.4rem;
+  height: 0.2rem;
+  border-radius: 999rem;
+  background: #2563eb;
+}
+
+.server-icon::before {
+  top: 0.5rem;
+}
+
+.server-icon::after {
+  bottom: 0.5rem;
+}
+
+/* meta block */
+
+.lorem-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.8rem;
+}
+
+.meta-label {
+  font-weight: 500;
+  color: #111827;
+}
+
+.meta-sub {
+  color: #6b7280;
+}
+
+/* divider between meta and text */
+
+.lorem-divider {
+  width: 1px;
+  height: 2.4rem;
+  background: #e5e7eb;
+  justify-self: stretch;
+}
+
+/* right text */
+
+.lorem-text {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 72rem) {
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .info-card {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .lorem-inner {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 0.7rem;
+  }
+
+  .lorem-divider {
+    display: none;
+  }
+}

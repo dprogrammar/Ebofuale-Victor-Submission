@@ -1,0 +1,69 @@
+<div class="risk-grid">
+  <div class="card asset-card">
+    <h2>Lorem Ipsum Dolor Sit</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Asset</th>
+          <th>Contextual risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of assets(); trackBy: trackById">
+          <td>
+            <div class="asset-main">
+              <div class="asset-icon"></div>
+              <div class="asset-text">
+                <div class="asset-name">{{ row.name }}</div>
+                <div class="asset-sub">{{ row.ip }}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="risk-pill risk-pill-critical">Critical</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-footer">
+      <span>Showing 1 of 2</span>
+      <div class="pager">
+        <button type="button">&#9664;</button>
+        <button type="button">&#9654;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card contextual-card">
+    <h2>Contextual Risk</h2>
+    <ul>
+      <li>
+        <span class="dot dot-critical"></span>
+        <span>2 Critical</span>
+      </li>
+      <li>
+        <span class="dot dot-high"></span>
+        <span>0 High</span>
+      </li>
+      <li>
+        <span class="dot dot-medium"></span>
+        <span>0 Medium</span>
+      </li>
+      <li>
+        <span class="dot dot-low"></span>
+        <span>0 Low</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card score-card">
+    <div class="score-circle">
+      <div class="score-ring">
+        <div class="score-inner">
+          <div class="score-value">2</div>
+          <div class="score-label">Critical assets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
